@@ -32,7 +32,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
 
     <title>Home Remodeling in the Bay Area | YAHUA Construction Inc</title>
-    <link rel="icon" href="https://yahuagc.com/favicon.png" type="image/png">
 </head>
 <body>
     <header>
@@ -55,8 +54,70 @@
         </p>
     </header>
     <section id="hero" class="hero overlay">
-        <h1>Where Creativity Meets Craftsmanship</h1>
+        <video autoplay loop playsinline class="hero-video" controls muted>
+            <source src="video/good-show.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
     </section>
+<script>
+// 等待页面加载完成
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取视频元素
+    const video = document.querySelector('.hero-video');
+    const videoContainer = document.querySelector('.hero');
+    
+    // 添加用户交互提示
+    function showPlayPrompt() {
+        const prompt = document.createElement('div');
+        prompt.className = 'video-prompt';
+        prompt.textContent = '点击播放视频';
+        prompt.style.position = 'absolute';
+        prompt.style.top = '50%';
+        prompt.style.left = '50%';
+        prompt.style.transform = 'translate(-50%, -50%)';
+        prompt.style.backgroundColor = 'rgba(0,0,0,0.7)';
+        prompt.style.color = 'white';
+        prompt.style.padding = '1em 2em';
+        prompt.style.borderRadius = '4px';
+        prompt.style.cursor = 'pointer';
+        videoContainer.appendChild(prompt);
+        return prompt;
+    }
+    
+    // 尝试自动播放视频
+    function playVideo() {
+        video.play().then(() => {
+            console.log('视频自动播放成功');
+            const prompt = document.querySelector('.video-prompt');
+            if (prompt) prompt.remove();
+        }).catch(error => {
+            console.log('视频自动播放失败，需要用户交互:', error);
+            const prompt = showPlayPrompt();
+            // 单一交互触发源，避免多重监听
+            const triggerPlay = () => {
+                video.play().then(() => {
+                    console.log('用户交互后播放成功');
+                    prompt.remove();
+                    document.removeEventListener('click', triggerPlay);
+                });
+            };
+            prompt.addEventListener('click', triggerPlay);
+            document.addEventListener('click', triggerPlay);
+        });
+    }
+    
+    // 页面加载完成后尝试播放
+    playVideo();
+    
+    // 当视频暂停时自动重新播放（处理意外暂停情况）
+    video.addEventListener('pause', function() {
+        // 检查是否是用户主动暂停
+        if (!video.paused) return;
+        setTimeout(() => video.play(), 1000);
+    });
+});
+</script>
 <!--    <section id="intro-container" class="intro-container" >-->
 <!--        <div>-->
 <!--&lt;!&ndash;            <a href="" style="display: grid; place-items: center; margin-bottom: 3em;"><img alt=" YAHUA Construction Inc is a HomeAdvisor Screened & Approved Pro" style="display:block;" src="../www.homeadvisor.com/images/sp-badges/soap-solid-border77f7.html?sp=144449032&amp;key=f15b6e40e280c2ca2fd384515e3f310c" /></a>&ndash;&gt;-->
@@ -287,9 +348,9 @@
         </div>
         <div class="gallery-container">
             <div class="gallery-cover" >
-                <img src="img/pt002.jpg" style="height: 60%" class="gallery-img1" alt="home remodeling">
-                <img src="img/pt0001.jpg" style="height: 60%" class="gallery-img2" alt="bathroom remodeling">
-                <img src="img/gif001.gif" style="height: 60%" class="gallery-img3" alt="bathroom remodeling">
+                <img src="video/one-one.jpg" style="height: 60%" class="gallery-img1" alt="home remodeling">
+                <img src="video/two-two.jpg" style="height: 60%" class="gallery-img2" alt="bathroom remodeling">
+                <img src="video/three-three.jpg" style="height: 60%" class="gallery-img3" alt="bathroom remodeling">
             </div>
 
             <!-- GALLERY COVER -->
@@ -383,8 +444,8 @@ images.forEach((img, index) => {
 
                 </p>
             </div>
-            <img src="img/team01.jpg" width="1883" height="1345" class="team-img1" alt="">
-            <img src="img/team02.jpg" width="1883" height="1345" class="team-img2" alt="">
+            <img src="img2/picpic1.jpg" width="1883" height="1345" class="team-img1" alt="">
+            <img src="img2/picpic2.jpg" width="1883" height="1345" class="team-img2" alt="">
             <p STYLE="font-size: 18px">Meet our team of passionate home renovation contractor, designers and builders, dedicated to create your sustainable and personalized spaces. We believe in collaboration and communication, ensuring that every home remodeling project is a true reflection of your unique style and preferences.</p>
         </div>
     </section>
@@ -403,7 +464,7 @@ images.forEach((img, index) => {
     </section>
 
     <script>
-        dfjdskl
+ 
     </script>
     <footer class="overlay-dark">
         <div class="footer-container">

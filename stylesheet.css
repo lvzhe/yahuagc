@@ -155,9 +155,20 @@ footer h1{
 }
 
 .hero{
-    background: url('img/title03.jpg') no-repeat;
+    /* background: url('img/title03.jpg') no-repeat; */
     background-size: cover;
     height: 60vh;
+    min-height: 350px; /* 调整最小高度确保显示完整 */
+    position: relative; /* 添加相对定位 */
+}
+.hero-video{
+       object-position: center; /* 调整视频居中显示 */
+    height: 100%; /* 修改为100%以填充容器高度 */
+    width: 100%; /* 添加宽度100% */
+    object-fit: cover; /* 添加对象填充模式 */
+    position: absolute; /* 添加绝对定位 */
+    top: 0; /* 定位到容器顶部 */
+    left: 0; /* 定位到容器左侧 */
 }
 
 .overlay{
